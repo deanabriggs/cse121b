@@ -16,7 +16,7 @@ myProfile.placesLived.push(
         length: '16 years'
     },
     {
-        place: 'Wisconsin, MN',
+        place: 'Hudson, WI',
         length: '2 years'
     },
     {
@@ -24,20 +24,12 @@ myProfile.placesLived.push(
         length:  '3 years'
     },
     {
-        place: 'Stockton, CA',
-        length: '5 years'
+        place: 'San Joaquin County, CA',
+        length: '11 years'
     },
     {
-        place: 'Manteca, CA',
-        length: '6 years'
-    },
-    {
-        place: 'San Jose, CA',
-        length: '8 years'
-    },
-    {
-        place: 'Santa Clara, CA',
-        length: '5 years'
+        place: 'Santa Clara County, CA',
+        length: '12 years'
     }
 );
 
