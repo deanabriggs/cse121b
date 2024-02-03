@@ -12,16 +12,16 @@ let myProfile = {
 /* Populate Profile Object with placesLive objects */
 myProfile.placesLived.push(
     {
-        place: 'Roseville, CA',
+        place: 'Placer County, CA',
         length: '16 years'
     },
     {
-        place: 'Hudson, WI',
+        place: 'St. Croix County, WI',
         length: '2 years'
     },
     {
-        place: 'Lakewood, CA',
-        length:  '3 years'
+        place: 'Los Angeles County, CA',
+        length: '3 years'
     },
     {
         place: 'San Joaquin County, CA',
@@ -29,7 +29,7 @@ myProfile.placesLived.push(
     },
     {
         place: 'Santa Clara County, CA',
-        length: '12 years'
+        length: '13 years'
     }
 );
 
