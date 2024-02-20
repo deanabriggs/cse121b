@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/project.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <ul id="menu">
+            <li><a id="toggleMenu">&equiv;</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="w01-task.html">W1 Task</a></li>
+            <li><a href="w03-task.html">W3 Task</a></li>
+            <li><a href="w04-task.html">W4 Task</a></li>
+            <li><a href="w05-task.html">W5 Task</a></li>
+            <li><a href="project.html" class="active">Project</a></li>
+        </ul>
+    </nav>>
+    
+    <header>
+        <h1>Project</h1>
+    </header>
+    
+    <h2>Find the Best Dog For You</h2>
+    <p>You can filter this list to find the best dog breed suited to features most important to you.
+        <br>Select the most important features first. Dog breeds that score low will be filtered off the list.  The rest will be sorted in order of their closest match to your selections.
+    </p>
+
+    <div id="features"></div>
+
+    <div id="dogs"></div>
+
+    <footer>
+        &copy;<span id="year"></span> | CSE 121b | Project
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+
+
+</body>
+</html>

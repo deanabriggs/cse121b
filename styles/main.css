@@ -246,7 +246,7 @@ footer {
     color: #eee;
 }
 
-#temples {
+#temples, #dogs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: .5rem;
@@ -254,8 +254,8 @@ footer {
     margin-bottom: 3rem;
 }
 
-#temples article {
-    height: 250px;
+#temples article, #dogs article {
+    height: 280px;
     margin: .5rem;
     border: 1px solid rgba(0, 0, 0, .1);
     padding: 1rem;
@@ -264,6 +264,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: x-small;
 }
 
 #temples h4 {
@@ -272,9 +273,9 @@ footer {
 }
 
 
-#temples img {
+#temples img, #dogs img {
     width: 250px;
-    height: auto;
+    max-height: 180px;
     box-shadow: 0 0 30px #777;
     margin: .5rem;
 }
