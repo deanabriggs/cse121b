@@ -57,37 +57,38 @@ const getDogDetails = async (breeds) => {
         if (dogInfo && dogInfo.length > 0) {             
             const {name, ...traits} = dogInfo[0];
             const newDog = {[name]: traits};
-            dogDetail.push(newDog);
+            if (!dogDetail.includes(newDog)) {
+                dogDetail.push(newDog);
+            }
         } 
     }));
     displayDogs(dogDetail)
 };
 
 const filterDogs = (dogData) => {
-
+    document.querySelector("#dogs").innerHTML = "";
     const filteredDogs = dogData.filter(dog => {
         const traits = Object.values(dog)[0];
         return (
-            (!shed.checked || dog.shedding <= 3) &&
-            (!coat.checked || dog.coat_length <= 3) &&
-            (!groom.checked || dog.grooming <= 3) &&
-            (!drool.checked || dog.drooling <= 3) &&
-            (!nbark.checked || dog.barking <= 3) &&
-            (!kids.checked || dog.good_with_children >= 3) &&
-            (!otherDogs.checked || dog.good_with_other_dogs >= 3) &&
-            (!strange.checked || dog.good_with_strangers >= 3) &&
-            (!protect.checked || dog.protectiveness >= 3) &&
-            (!play.checked || dog.playfulness >= 3) &&
-            (!train.checked || dog.trainability >= 3) &&
-            (!energy.checked || dog.energy >= 3) &&
-            (!bark.checked || dog.barking <= 3)
+            (!shed.checked || parseInt(traits.shedding) < 3) &&
+            (!coat.checked || parseInt(traits.coat_length) < 3) &&
+            (!groom.checked || parseInt(traits.grooming) < 3) &&
+            (!drool.checked || parseInt(traits.drooling) < 3) &&
+            (!nbark.checked || parseInt(traits.barking) < 3) &&
+            (!kids.checked || parseInt(traits.good_with_children) > 3) &&
+            (!otherDogs.checked || parseInt(traits.good_with_other_dogs) > 3) &&
+            (!strange.checked || parseInt(traits.good_with_strangers) > 3) &&
+            (!protect.checked || parseInt(traits.protectiveness) > 3) &&
+            (!play.checked || parseInt(traits.playfulness) > 3) &&
+            (!train.checked || parseInt(traits.trainability) > 3) &&
+            (!energy.checked || parseInt(traits.energy) > 3) &&
+            (!bark.checked || parseInt(traits.barking) < 3)
         )
     });
     displayDogs(filteredDogs);
 };
 
 const displayDogs = async (filteredData) => {
-    document.querySelector("#dogs").innerHTML = ""
 
     filteredData.sort((a, b) => {
         const dogNameA = Object.keys(a)[0];
