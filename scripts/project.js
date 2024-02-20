@@ -9,6 +9,10 @@ const shed = document.getElementById('shed');
 const coat = document.getElementById('coat');
 const groom = document.getElementById('groom');
 const drool = document.getElementById('drool');
+const nprotect = document.getElementById('nprotect');
+const nplay = document.getElementById('nplay');
+const ntrain = document.getElementById('ntrain');
+const nenergy = document.getElementById('nenergy');
 const nbark = document.getElementById('nbark');
 const kids = document.getElementById('kids');
 const otherDogs = document.getElementById('otherDogs');
@@ -47,22 +51,25 @@ const getBreeds = async () => {
 
 const getDogDetails = async (breeds) => {
     await Promise.all(breeds.map(async (dogName) => {
-        const response = await fetch('https://api.api-ninjas.com/v1/dogs?limit=1&name=' + dogName, {
+        const response = await fetch('https://api.api-ninjas.com/v1/dogs?&name=' + dogName, {
             headers: {'X-Api-Key': myApiNinjaKey}
         });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const dogInfo = await response.json();
-        if (dogInfo && dogInfo.length > 0) {             
-            const {name, ...traits} = dogInfo[0];
-            const newDog = {[name]: traits};
-            if (!dogDetail.includes(newDog)) {
-                dogDetail.push(newDog);
-            }
+        if (dogInfo && dogInfo.length > 0) {
+            dogInfo.forEach(dog => {
+                const {name, ...traits} = dog;
+                const newDog = {[name]: traits};
+
+                if (!dogDetail.some(existingDog => Object.keys(existingDog)[0] === name)) {
+                    dogDetail.push(newDog);
+                }
+            });
         } 
     }));
-    displayDogs(dogDetail)
+    displayDogs(dogDetail);
 };
 
 const filterDogs = (dogData) => {
@@ -74,6 +81,10 @@ const filterDogs = (dogData) => {
             (!coat.checked || parseInt(traits.coat_length) < 3) &&
             (!groom.checked || parseInt(traits.grooming) < 3) &&
             (!drool.checked || parseInt(traits.drooling) < 3) &&
+            (!nprotect.checked || parseInt(traits.protectiveness) < 3) &&
+            (!nplay.checked || parseInt(traits.playfulness) < 3) &&
+            (!ntrain.checked || parseInt(traits.trainability) < 3) &&
+            (!nenergy.checked || parseInt(traits.energy) < 3) &&
             (!nbark.checked || parseInt(traits.barking) < 3) &&
             (!kids.checked || parseInt(traits.good_with_children) > 3) &&
             (!otherDogs.checked || parseInt(traits.good_with_other_dogs) > 3) &&
@@ -82,7 +93,7 @@ const filterDogs = (dogData) => {
             (!play.checked || parseInt(traits.playfulness) > 3) &&
             (!train.checked || parseInt(traits.trainability) > 3) &&
             (!energy.checked || parseInt(traits.energy) > 3) &&
-            (!bark.checked || parseInt(traits.barking) < 3)
+            (!bark.checked || parseInt(traits.barking) > 3)
         )
     });
     displayDogs(filteredDogs);
@@ -149,6 +160,10 @@ coat.addEventListener("change", () => filterDogs(dogDetail));
 groom.addEventListener("change", () => filterDogs(dogDetail));
 drool.addEventListener("change", () => filterDogs(dogDetail));
 nbark.addEventListener("change", () => filterDogs(dogDetail));
+nprotect.addEventListener("change", () => filterDogs(dogDetail));
+nplay.addEventListener("change", () => filterDogs(dogDetail));
+ntrain.addEventListener("change", () => filterDogs(dogDetail));
+nenergy.addEventListener("change", () => filterDogs(dogDetail));
 kids.addEventListener("change", () => filterDogs(dogDetail));
 otherDogs.addEventListener("change", () => filterDogs(dogDetail));
 strange.addEventListener("change", () => filterDogs(dogDetail));
