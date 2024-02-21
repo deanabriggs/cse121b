@@ -1,4 +1,4 @@
-/* Global Variables */
+/* ChatGPT was used to help identify issues and figure out some code concepts to apply to this project */
 const myApiNinjaKey = "B6Fj6jjEGtwbShQAek5TtQ==2EVLcZjpyptQs0w3";
 const dogDetail = [];
 const dogNameList = [];
